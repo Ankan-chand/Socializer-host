@@ -35,7 +35,7 @@ export const loadUser = () => async (dispatch) => {
       type: "LoadUserRequest",
     });
 
-    const { data } = await axios.get("https://socializer-39eg.onrender.com/api/v1/me");
+    const { data } = await axios.get("https://socializer-39eg.onrender.com/api/v1/me", { withCredentials: true });
 
     dispatch({
       type: "LoadUserSuccess",
@@ -55,7 +55,7 @@ export const getFollowingPosts = () => async (dispatch) => {
       type: "postOfFollowingRequest",
     });
 
-    const { data } = await axios.get("https://socializer-39eg.onrender.com/api/v1/posts");
+    const { data } = await axios.get("https://socializer-39eg.onrender.com/api/v1/posts", { withCredentials: true });
     dispatch({
       type: "postOfFollowingSuccess",
       payload: data.posts,
@@ -75,7 +75,7 @@ export const getAllUsers = (name = "") =>
         type: "allUsersRequest",
       });
 
-      const { data } = await axios.get(`https://socializer-39eg.onrender.com/api/v1/users?name=${name}`);
+      const { data } = await axios.get(`https://socializer-39eg.onrender.com/api/v1/users?name=${name}`, { withCredentials: true });
       dispatch({
         type: "allUsersSuccess",
         payload: data.users,
@@ -94,7 +94,7 @@ export const getMyPosts = () => async (dispatch) => {
       type: "myPostsRequest",
     });
 
-    const { data } = await axios.get("https://socializer-39eg.onrender.com/api/v1/my/posts");
+    const { data } = await axios.get("https://socializer-39eg.onrender.com/api/v1/my/posts", { withCredentials: true });
     dispatch({
       type: "myPostsSuccess",
       payload: data.posts,
@@ -140,7 +140,7 @@ export const registerUser = (name, email, password, avatar) => async (dispatch) 
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        }, { withCredentials: true }
       );
 
       dispatch({
@@ -168,7 +168,7 @@ export const updateProfile = (name, email, avatar) => async (dispatch) => {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      }, { withCredentials: true }
     );
 
     dispatch({
@@ -197,7 +197,7 @@ export const updatePassword = (oldPassword, newPassword) => async (dispatch) => 
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        }, { withCredentials: true }
       );
 
       dispatch({
@@ -219,7 +219,7 @@ export const updatePassword = (oldPassword, newPassword) => async (dispatch) => 
         type: "deleteProfileRequest",
       });
   
-      const { data } = await axios.delete("https://socializer-39eg.onrender.com/api/v1/delete/me");
+      const { data } = await axios.delete("https://socializer-39eg.onrender.com/api/v1/delete/me", { withCredentials: true });
   
       dispatch({
         type: "deleteProfileSuccess",
@@ -303,7 +303,7 @@ export const updatePassword = (oldPassword, newPassword) => async (dispatch) => 
         type: "userPostsRequest",
       });
   
-      const { data } = await axios.get(`https://socializer-39eg.onrender.com/api/v1/userposts/${id}`);
+      const { data } = await axios.get(`https://socializer-39eg.onrender.com/api/v1/userposts/${id}`, { withCredentials: true });
       dispatch({
         type: "userPostsSuccess",
         payload: data.posts,
@@ -324,7 +324,7 @@ export const updatePassword = (oldPassword, newPassword) => async (dispatch) => 
         type: "userProfileRequest",
       });
   
-      const { data } = await axios.get(`https://socializer-39eg.onrender.com/api/v1/user/${id}`);
+      const { data } = await axios.get(`https://socializer-39eg.onrender.com/api/v1/user/${id}`, { withCredentials: true });
       dispatch({
         type: "userProfileSuccess",
         payload: data.user,
@@ -345,7 +345,7 @@ export const updatePassword = (oldPassword, newPassword) => async (dispatch) => 
         type: "followUserRequest",
       });
   
-      const { data } = await axios.get(`https://socializer-39eg.onrender.com/api/v1/user/follow/${id}`);
+      const { data } = await axios.get(`https://socializer-39eg.onrender.com/api/v1/user/follow/${id}`, { withCredentials: true });
       dispatch({
         type: "followUserSuccess",
         payload: data.message,

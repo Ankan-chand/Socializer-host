@@ -7,7 +7,7 @@ export const likePost = (id) => async (dispatch) => {
       type: "likeRequest",
     });
 
-    const { data } = await axios.get(`https://socializer-39eg.onrender.com/api/v1/post/${id}`);
+    const { data } = await axios.get(`https://socializer-39eg.onrender.com/api/v1/post/${id}`, { withCredentials: true });
     dispatch({
       type: "likeSuccess",
       payload: data.message,
@@ -36,7 +36,7 @@ export const addCommentOnPost = (id, comment) => async (dispatch) => {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      }, { withCredentials: true }
     );
     dispatch({
       type: "addCommentSuccess",
@@ -59,7 +59,7 @@ export const deleteCommentOnPost = (id, commentId) => async (dispatch) => {
 
     const { data } = await axios.delete(`https://socializer-39eg.onrender.com/api/v1/post/comment/${id}`, {
       data: { commentId },
-    });
+    }, { withCredentials: true });
     dispatch({
       type: "deleteCommentSuccess",
       payload: data.message,
@@ -89,7 +89,7 @@ export const createNewPost = (caption, image) => async (dispatch) => {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      }, { withCredentials: true }
     );
     dispatch({
       type: "newPostSuccess",
@@ -119,7 +119,7 @@ export const updatePost = (caption, id) => async (dispatch) => {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      }, { withCredentials: true }
     );
     dispatch({
       type: "updateCaptionSuccess",
@@ -141,7 +141,7 @@ export const deletePost = (id) => async (dispatch) => {
       type: "deletePostRequest",
     });
 
-    const { data } = await axios.delete(`https://socializer-39eg.onrender.com/api/v1/post/${id}`);
+    const { data } = await axios.delete(`https://socializer-39eg.onrender.com/api/v1/post/${id}`, { withCredentials: true });
     dispatch({
       type: "deletePostSuccess",
       payload: data.message,
