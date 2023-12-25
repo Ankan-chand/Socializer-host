@@ -35,7 +35,7 @@ export const loadUser = () => async (dispatch) => {
       type: "LoadUserRequest",
     });
 
-    const { data } = await axios.get("/api/v1/me");
+    const { data } = await axios.get("http://localhost:4000/api/v1/me");
 
     dispatch({
       type: "LoadUserSuccess",
