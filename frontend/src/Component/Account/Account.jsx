@@ -35,8 +35,8 @@ const Account = () => {
   };
 
   useEffect(() => {
-    dispatch(getMyPosts());
     dispatch(loadUser());
+    dispatch(getMyPosts());
   }, [dispatch]);
 
   useEffect(() => {

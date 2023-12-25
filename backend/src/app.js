@@ -10,7 +10,11 @@ const app = express();
 
 
 //add cors
-app.use(cors());
+app.use(cors({
+    origin: ['https://socia-lizer.netlify.app','http://localhost:3000'],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+}));
 
 // Use middleware to parse JSON and URL-encoded request bodies, and cookies
 app.use(express.json({limit:'50mb'}));
@@ -28,11 +32,6 @@ app.use("/api/v1",userRoutes);
 // Error handling middleware
 app.use(errorMiddleware);
 
-app.use(express.static(path.join(__dirname, "../../frontend/build")));
-
-app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../../frontend/build/index.html"));
-});
 
 // Export the app for use in other parts of the application
 module.exports = app;
