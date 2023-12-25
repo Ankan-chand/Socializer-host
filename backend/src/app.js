@@ -9,10 +9,7 @@ const app = express();
 
 
 //add cors
-app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'DELETE', 'PUT']
-}))
+app.use(cors());
 
 // Use middleware to parse JSON and URL-encoded request bodies, and cookies
 app.use(express.json({limit:'50mb'}));
