@@ -6,10 +6,6 @@ import store from "./store";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// toast.configure({
-//   autoClose: 5000, // Auto close the notification after 5 seconds
-//   draggable: false, // Prevent users from dragging the notification
-// });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -3,6 +3,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const errorMiddleware = require('./middlewares/Error.js');
 const cors = require("cors");
+const path = require("path");
 
 // Create a new Express app instance
 const app = express();
@@ -26,6 +27,12 @@ app.use("/api/v1",userRoutes);
 
 // Error handling middleware
 app.use(errorMiddleware);
+
+app.use(express.static(path.join(___dirname, "../../frontend/build")));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../../frontend/build/index.html"));
+});
 
 // Export the app for use in other parts of the application
 module.exports = app;
