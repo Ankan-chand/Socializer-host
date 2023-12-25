@@ -28,7 +28,7 @@ app.use("/api/v1",userRoutes);
 // Error handling middleware
 app.use(errorMiddleware);
 
-app.use(express.static(path.join(___dirname, "../../frontend/build")));
+app.use(express.static(path.join(__dirname, "../../frontend/build")));
 
 app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../../frontend/build/index.html"));
