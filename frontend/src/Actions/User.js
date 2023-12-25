@@ -8,7 +8,7 @@ export const loginUser = (email, password) => async (dispatch) => {
     });
 
     const { data } = await axios.post(
-      "/api/v1/login",
+      "https://socializer-39eg.onrender.com/api/v1/login",
       { email, password },
       {
         headers: {
@@ -35,7 +35,7 @@ export const loadUser = () => async (dispatch) => {
       type: "LoadUserRequest",
     });
 
-    const { data } = await axios.get("http://localhost:4000/api/v1/me");
+    const { data } = await axios.get("https://socializer-39eg.onrender.com/api/v1/me");
 
     dispatch({
       type: "LoadUserSuccess",
@@ -55,7 +55,7 @@ export const getFollowingPosts = () => async (dispatch) => {
       type: "postOfFollowingRequest",
     });
 
-    const { data } = await axios.get("/api/v1/posts");
+    const { data } = await axios.get("https://socializer-39eg.onrender.com/api/v1/posts");
     dispatch({
       type: "postOfFollowingSuccess",
       payload: data.posts,
@@ -75,7 +75,7 @@ export const getAllUsers = (name = "") =>
         type: "allUsersRequest",
       });
 
-      const { data } = await axios.get(`/api/v1/users?name=${name}`);
+      const { data } = await axios.get(`https://socializer-39eg.onrender.com/api/v1/users?name=${name}`);
       dispatch({
         type: "allUsersSuccess",
         payload: data.users,
@@ -94,7 +94,7 @@ export const getMyPosts = () => async (dispatch) => {
       type: "myPostsRequest",
     });
 
-    const { data } = await axios.get("/api/v1/my/posts");
+    const { data } = await axios.get("https://socializer-39eg.onrender.com/api/v1/my/posts");
     dispatch({
       type: "myPostsSuccess",
       payload: data.posts,
@@ -113,7 +113,7 @@ export const logoutUser = () => async (dispatch) => {
       type: "LogoutUserRequest",
     });
 
-    await axios.get("/api/v1/logout");
+    await axios.get("https://socializer-39eg.onrender.com/api/v1/logout");
 
     dispatch({
       type: "LogoutUserSuccess",
@@ -134,7 +134,7 @@ export const registerUser = (name, email, password, avatar) => async (dispatch) 
       });
 
       const { data } = await axios.post(
-        "/api/v1/register",
+        "https://socializer-39eg.onrender.com/api/v1/register",
         { name, email, password, avatar },
         {
           headers: {
@@ -162,7 +162,7 @@ export const updateProfile = (name, email, avatar) => async (dispatch) => {
     });
 
     const { data } = await axios.put(
-      "/api/v1/update/profile",
+      "https://socializer-39eg.onrender.com/api/v1/update/profile",
       { name, email, avatar },
       {
         headers: {
@@ -191,7 +191,7 @@ export const updatePassword = (oldPassword, newPassword) => async (dispatch) => 
       });
 
       const { data } = await axios.put(
-        "/api/v1/update/password",
+        "https://socializer-39eg.onrender.com/api/v1/update/password",
         { oldPassword, newPassword },
         {
           headers: {
@@ -219,7 +219,7 @@ export const updatePassword = (oldPassword, newPassword) => async (dispatch) => 
         type: "deleteProfileRequest",
       });
   
-      const { data } = await axios.delete("/api/v1/delete/me");
+      const { data } = await axios.delete("https://socializer-39eg.onrender.com/api/v1/delete/me");
   
       dispatch({
         type: "deleteProfileSuccess",
@@ -242,7 +242,7 @@ export const updatePassword = (oldPassword, newPassword) => async (dispatch) => 
       });
   
       const { data } = await axios.post(
-        "/api/v1/forgot/password",
+        "https://socializer-39eg.onrender.com/api/v1/forgot/password",
         {
           email,
         },
@@ -273,7 +273,7 @@ export const updatePassword = (oldPassword, newPassword) => async (dispatch) => 
       });
   
       const { data } = await axios.put(
-        `/api/v1/password/reset/${token}`,
+        `https://socializer-39eg.onrender.com/api/v1/password/reset/${token}`,
         {
           password,
         },
@@ -303,7 +303,7 @@ export const updatePassword = (oldPassword, newPassword) => async (dispatch) => 
         type: "userPostsRequest",
       });
   
-      const { data } = await axios.get(`/api/v1/userposts/${id}`);
+      const { data } = await axios.get(`https://socializer-39eg.onrender.com/api/v1/userposts/${id}`);
       dispatch({
         type: "userPostsSuccess",
         payload: data.posts,
@@ -324,7 +324,7 @@ export const updatePassword = (oldPassword, newPassword) => async (dispatch) => 
         type: "userProfileRequest",
       });
   
-      const { data } = await axios.get(`/api/v1/user/${id}`);
+      const { data } = await axios.get(`https://socializer-39eg.onrender.com/api/v1/user/${id}`);
       dispatch({
         type: "userProfileSuccess",
         payload: data.user,
@@ -345,7 +345,7 @@ export const updatePassword = (oldPassword, newPassword) => async (dispatch) => 
         type: "followUserRequest",
       });
   
-      const { data } = await axios.get(`/api/v1/user/follow/${id}`);
+      const { data } = await axios.get(`https://socializer-39eg.onrender.com/api/v1/user/follow/${id}`);
       dispatch({
         type: "followUserSuccess",
         payload: data.message,
