@@ -3,7 +3,6 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const errorMiddleware = require('./middlewares/Error.js');
 const cors = require("cors");
-const path = require("path");
 
 // Create a new Express app instance
 const app = express();
@@ -11,9 +10,9 @@ const app = express();
 
 //add cors
 app.use(cors({
-    origin: ['https://socia-lizer.netlify.app','http://localhost:3000'],
+    origin: 'https://soocializer.netlify.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
+    credentials: true
 }));
 
 // Use middleware to parse JSON and URL-encoded request bodies, and cookies
