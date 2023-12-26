@@ -7,7 +7,14 @@ export const likePost = (id) => async (dispatch) => {
       type: "likeRequest",
     });
 
-    const { data } = await axios.get(`https://socializer-39eg.onrender.com/api/v1/post/${id}`, { withCredentials: true });
+    const authToken = localStorage.getItem("authorization");
+
+    const { data } = await axios.get(`https://socializer-39eg.onrender.com/api/v1/post/${id}`, {
+      headers: {
+        "authorization": `Bearer ${authToken}`,
+      },
+      withCredentials: true,
+    });
     dispatch({
       type: "likeSuccess",
       payload: data.message,
@@ -27,6 +34,8 @@ export const addCommentOnPost = (id, comment) => async (dispatch) => {
       type: "addCommentRequest",
     });
 
+    const authToken = localStorage.getItem("authorization");
+
     const { data } = await axios.put(
       `https://socializer-39eg.onrender.com/api/v1/post/comment/${id}`,
       {
@@ -35,6 +44,7 @@ export const addCommentOnPost = (id, comment) => async (dispatch) => {
       {
         headers: {
           "Content-Type": "application/json",
+          "authorization": `Bearer ${authToken}`,
         },
       }, { withCredentials: true }
     );
@@ -56,10 +66,18 @@ export const deleteCommentOnPost = (id, commentId) => async (dispatch) => {
     dispatch({
       type: "deleteCommentRequest",
     });
+    
+    const authToken = localStorage.getItem("authorization");
 
     const { data } = await axios.delete(`https://socializer-39eg.onrender.com/api/v1/post/comment/${id}`, {
       data: { commentId },
-    }, { withCredentials: true });
+    }, {
+      headers: {
+        "authorization": `Bearer ${authToken}`,
+      },
+      withCredentials: true,
+    });
+
     dispatch({
       type: "deleteCommentSuccess",
       payload: data.message,
@@ -79,6 +97,8 @@ export const createNewPost = (caption, image) => async (dispatch) => {
       type: "newPostRequest",
     });
 
+    const authToken = localStorage.getItem("authorization");
+
     const { data } = await axios.post(
       `https://socializer-39eg.onrender.com/api/v1/post/upload`,
       {
@@ -88,6 +108,7 @@ export const createNewPost = (caption, image) => async (dispatch) => {
       {
         headers: {
           "Content-Type": "application/json",
+          "authorization": `Bearer ${authToken}`,
         },
       }, { withCredentials: true }
     );
@@ -110,6 +131,8 @@ export const updatePost = (caption, id) => async (dispatch) => {
       type: "updateCaptionRequest",
     });
 
+    const authToken = localStorage.getItem("authorization");
+
     const { data } = await axios.put(
       `https://socializer-39eg.onrender.com/api/v1/post/${id}`,
       {
@@ -118,6 +141,7 @@ export const updatePost = (caption, id) => async (dispatch) => {
       {
         headers: {
           "Content-Type": "application/json",
+          "authorization": `Bearer ${authToken}`,
         },
       }, { withCredentials: true }
     );
@@ -141,7 +165,14 @@ export const deletePost = (id) => async (dispatch) => {
       type: "deletePostRequest",
     });
 
-    const { data } = await axios.delete(`https://socializer-39eg.onrender.com/api/v1/post/${id}`, { withCredentials: true });
+    const authToken = localStorage.getItem("authorization");
+
+    const { data } = await axios.delete(`https://socializer-39eg.onrender.com/api/v1/post/${id}`, {
+      headers: {
+        "authorization": `Bearer ${authToken}`,
+      },
+      withCredentials: true,
+    });
     dispatch({
       type: "deletePostSuccess",
       payload: data.message,
