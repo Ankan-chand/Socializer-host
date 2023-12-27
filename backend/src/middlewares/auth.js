@@ -9,8 +9,13 @@ exports.isAuthenticated = catchAsyncError(async (req,res,next) => {
         // // Extract the `token` from the request cookies
         // const {token} = req.cookies;
 
-        //Extract token from request headers (localStorage)
-        const token = req.headers["authorization"].split(" ")[1];     //e.g., "Bearer 23ur35165rs3riuyetr"
+        // Extract token from request headers (localStorage)
+        const BearerToken = await req.headers["authorization"];
+
+
+        const token = BearerToken.split("Bearer ")[1];    //e.g., "Bearer 23ur35165rs3riuyetr"
+   
+
 
         // If there is no `token`, send a `401 Unauthorized` response with an error message
         if(!token) {

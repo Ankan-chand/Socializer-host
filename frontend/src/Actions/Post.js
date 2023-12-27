@@ -48,6 +48,7 @@ export const addCommentOnPost = (id, comment) => async (dispatch) => {
         },
       }, { withCredentials: true }
     );
+ 
     dispatch({
       type: "addCommentSuccess",
       payload: data.message,
@@ -69,14 +70,15 @@ export const deleteCommentOnPost = (id, commentId) => async (dispatch) => {
     
     const authToken = localStorage.getItem("authorization");
 
-    const { data } = await axios.delete(`https://socializer-39eg.onrender.com/api/v1/post/comment/${id}`, {
+    const { data } = await axios.delete(`https://socializer-39eg.onrender.com/api/v1/post/comment/${id}`,  {
       data: { commentId },
-    }, {
       headers: {
-        "authorization": `Bearer ${authToken}`,
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${authToken}`,
       },
       withCredentials: true,
-    });
+    }
+    );
 
     dispatch({
       type: "deleteCommentSuccess",

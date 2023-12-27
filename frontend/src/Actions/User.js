@@ -6,6 +6,7 @@ export const loginUser = (email, password) => async (dispatch) => {
       type: "LoginRequest",
     });
 
+
     const { data } = await axios.post(
       "https://socializer-39eg.onrender.com/api/v1/login",
       { email, password },
@@ -37,6 +38,7 @@ export const loadUser = () => async (dispatch) => {
     });
 
     const authToken = localStorage.getItem("authorization");
+
 
     const { data } = await axios.get(
       "https://socializer-39eg.onrender.com/api/v1/me",
@@ -109,6 +111,7 @@ export const getAllUsers =
           withCredentials: true,
         }
       );
+
       dispatch({
         type: "allUsersSuccess",
         payload: data.users,
@@ -138,6 +141,7 @@ export const getMyPosts = () => async (dispatch) => {
         withCredentials: true,
       }
     );
+
     dispatch({
       type: "myPostsSuccess",
       payload: data.posts,
