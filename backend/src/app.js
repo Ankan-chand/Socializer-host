@@ -10,7 +10,7 @@ const app = express();
 
 //add cors
 app.use(cors({
-    origin: ['https://soocializer.netlify.app', 'https://sociai-zer.onrender.com'],
+    origin: ['https://soocializer.netlify.app', 'https://sociai-zer.onrender.com', 'http://localhost:3000'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true
 }));
