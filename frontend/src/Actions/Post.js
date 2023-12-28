@@ -74,7 +74,7 @@ export const deleteCommentOnPost = (id, commentId) => async (dispatch) => {
       data: { commentId },
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${authToken}`,
+        "authorization": `Bearer ${authToken}`,
       },
       withCredentials: true,
     }

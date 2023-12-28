@@ -192,7 +192,7 @@ export const registerUser =
         }
       );
 
-      localStorage.setItem("authorizaion", data.token);
+      await localStorage.setItem("authorization", data.token);
 
       dispatch({
         type: "RegisterSuccess",
