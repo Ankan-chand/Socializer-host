@@ -106,9 +106,9 @@ exports.userLogin = catchAsyncError(async (req, res, next) => {
   const token = await user.generateToken();
 
   //Send the token as json to store in localStorage in browser
-  res.status(201).json({
+  res.status(200).json({
     success: true,
-    message: "User registered successfully",
+    message: "User logged in successfully",
     user,
     token
   })
