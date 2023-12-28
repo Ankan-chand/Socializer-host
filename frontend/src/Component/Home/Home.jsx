@@ -65,7 +65,7 @@ const Home = () => {
             />
           ))
         ) : (
-          <Typography variant="h6">No posts yet</Typography>
+          <Typography variant="h6">No posts to show. Follow users to see their posts.</Typography>
         )}
       </div>
       <div className="homeright">
